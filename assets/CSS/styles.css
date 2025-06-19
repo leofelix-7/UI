@@ -16,7 +16,7 @@
 :root {
     --bg-color: #1c1a2c;
     --second-big-color: #323946;
-    --main-color: #7cf03d;
+    --main-color: #68d42e;
     --white-color: #ffffff;
     --disabled-color: #fff3;
 }
@@ -76,7 +76,7 @@ nav a {
     transition: .3s; /* original .5s */
 }
 
-nav a:hover,
+nav a:hover, /* group selector (in case forgot) */
 nav a.active {
     color: var(--main-color);
 }
@@ -107,17 +107,17 @@ nav a.active {
     }
 }
 
-.bars-box .active .bar{
+.bars-box .active .bar{ /* decendant combinator (incase forgot) */
     animation: show-bars .5s ease-in-out both;
     animation-delay: calc(.1s * var(--i));
 }
 
 @keyframes show-bars {
     0%{
-        transform: translateY(-100%);
+        transform: translateY(-100%); /* TranslateY control the height of an element & if it went higher ti will go to negative values */
     }
     100%{
-        transform: translateY(0);
+        transform: translateY(0); /* 0 is normal and if it go down it will go to positive values */
     }
 }
 
@@ -154,7 +154,7 @@ section .active {
 }
 
 .home-detail h1{
-    font-size: clamp(3.5rem, 10vw, 5.5rem);
+    font-size: clamp(3.5rem, 10vw, 5.5rem); /* 3.5rem minium and 5.5rem maximum */
 }
 
 .home-detail h2 {
@@ -201,4 +201,9 @@ section .active {
     90% {
         width: 100%;
     }
+}
+
+.home-detail p {
+    font-size: 1.6rem;
+    margin: 1rem 0 2.5rem;
 }
