@@ -1,0 +1,204 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Universal Selctor */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: "Roboto Mono", monospace;
+}
+
+/* Universal Variables */
+:root {
+    --bg-color: #1c1a2c;
+    --second-big-color: #323946;
+    --main-color: #7cf03d;
+    --white-color: #ffffff;
+    --disabled-color: #fff3;
+}
+
+/* Defining the background color (body)*/
+body {
+    background-color: var(--white-color);
+}
+
+/* Defining the font size (html)*/
+html {
+    font-size: 62.5%;
+}
+
+
+/* Header */
+header {
+    position: fixed;
+    background-color: var(--bg-color);
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 2rem 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Put things in center, both vertical & horizontal */
+    z-index: 100;
+}
+
+    /* Header's Animation */
+    header .active{ /* active class inside the header */
+        animation: show-header 1.5s linear forwards; /* animation name is "show-header" and the duration of it is 1.5 seconds with linear timing function and forwards mean after the animation keep it at 100% state of the animation */
+        animation-delay: 0.2s;
+    }
+
+    /* Header's Animation Keyframe */
+    @keyframes show-header {
+        100%{ /* keep it visible at 100% with forwards rule */
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+
+
+.logo {
+    font-size: 3rem;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+nav a {
+    font-size: 2rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin-left: 2.5rem;
+    transition: .3s; /* original .5s */
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--main-color);
+}
+
+/* revision 1 --*/
+
+.bars-box{
+    position: absolute; /* remove the flow of document and don't caare about other elements and will be placed whenver */
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.bars-box .bar{
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    animation: hide-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes hide-bars {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
+
+.bars-box .active .bar{
+    animation: show-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes show-bars {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+#menu-icon {
+    font-size: 4rem;
+    display: none;
+}
+
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10rem 9% 2rem;
+    color: var(--main-color);
+}
+
+section .active {
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.6s;
+}
+
+@keyframes show-content {
+    100%{
+        visibility: visible;
+        opacity: 1;
+        overflow: auto;
+    }
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.home-detail h1{
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
+}
+
+.home-detail h2 {
+    display: inline-block;
+    font-size: 3.2rem;
+    margin-top: -1rem;
+}
+
+.home-detail h2 span {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    --webkit-text-stroke: .07rem var(--main-color);
+    animation: display-text 16s linear infinite;;
+    animation-delay: calc(-4s * var(--i));
+}
+
+@keyframes display-text {
+    25%,
+    100% {
+        display: none;
+
+    }
+}
+
+.home-detail h2 span::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: .2rem solid var(--main-color);
+    color: var(--main-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+
+@keyframes fill-text {
+    10%,
+    100% {
+        width: 0;
+    }
+
+    70%,
+    90% {
+        width: 100%;
+    }
+}
